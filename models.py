@@ -26,7 +26,7 @@ class Department(Base):
     name = Column(String)
     description = Column(String)
 
-    employee = relationship('Employee', back_populates="department")
+    employees = relationship('Employee', back_populates="department")
     positions = relationship('Position', back_populates="department")
 
 
@@ -39,6 +39,6 @@ class Position(Base):
     description = Column(String)
     department_id = Column(Integer,ForeignKey('departments.id'))
 
-    employee = relationship('Employee', back_populates="position")
+    employees = relationship('Employee', back_populates="position")
     department = relationship('Department', back_populates="positions")
 

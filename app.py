@@ -98,10 +98,14 @@ def workplace():
                 if employee_option == 1:
                     click.secho('To add a new employee...', fg='blue')
                     while True:
-                        name = click.prompt('Enter employee name', type=str)
+                        first_name = click.prompt('Enter employee first name', type=str)
+                        last_name = click.prompt('Enter employee last name', type=str)
+                        email = click.prompt('Enter employee email', type=str)
                         position = click.prompt('Enter position', type=str)
-                        if name and position:
-                            add_employee(name, position)
+                        department_name = click.prompt('Enter department name', type=str)
+
+                        if first_name and last_name and email and position and department_name :
+                            add_employee(first_name,last_name,email, department_name,position)
                             click.secho('Employee added successfully', fg='green')
                             break
                         else:

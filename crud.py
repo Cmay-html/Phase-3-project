@@ -2,7 +2,9 @@ from models import Employee,Position,Department,session
 
 
 #add employee
-def add_employee(first_name,last_name,email,department,position):
+def add_employee(first_name,last_name,email,department_name,position_title):
+    department = session.query(Department).filter(Department.name == department_name).first()
+    position = session.query(Position).filter(Position.title == position_title).first()
     employee = Employee(
         first_name = first_name,
         last_name = last_name,
