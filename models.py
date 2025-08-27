@@ -16,8 +16,8 @@ class Employee(Base):
     position_id = Column(Integer,ForeignKey('positions.id'))
     hire_date = Column(DateTime,default=func.now())
 
-    position = relationship('Position', back_populates="employee")
-    department = relationship('Department', back_populates="employee")
+    position = relationship('Position', back_populates="employees")
+    department = relationship('Department', back_populates="employees")
 
 
 class Department(Base):
@@ -27,6 +27,7 @@ class Department(Base):
     description = Column(String)
 
     employee = relationship('Employee', back_populates="department")
+    positions = relationship('Position', back_populates="department")
 
 
 
@@ -36,6 +37,8 @@ class Position(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     description = Column(String)
+    department_id = Column(Integer,ForeignKey('departments.id'))
 
     employee = relationship('Employee', back_populates="position")
+    department = relationship('Department', back_populates="positions")
 
