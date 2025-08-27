@@ -1,1 +1,53 @@
-Generic single-database configuration.
+# Employment Department Directory CLI Application
+
+This is a command-line workplace management application built using Python, Click for the CLI interface, and SQLAlchemy ORM for database management. Alembic is used for database migrations.
+
+## Features
+- Manage departments and their Records
+- Manage employees and their positions
+- Interactive CLI menu for easy navigation and data entry
+
+## Requirements
+- Python 3.8.13
+- Click library for CLI prompts and menus
+- SQLAlchemy for ORM and SQLite database connection
+- Alembic for database migrations and version control
+
+## Installation
+1. Clone the repository or copy the source code files.
+2. Install dependencies:
+3. Initialize the database and apply migrations:
+
+
+## Running the Application
+Run the main application script to start the interactive workplace CLI:
+
+Follow the on-screen prompts to add/view Departments, Positions, Employees.
+
+## Project Structure
+- `main.py`: Contains the command-line interface logic using Click to interact with users.
+- `models.py`: Defines SQLAlchemy ORM models for Departments, Positions and Employees with relationships.
+- `crud.py`: CRUD operations used by the CLI to interact with the database.
+- `alembic/`: Contains Alembic migration scripts and configuration to manage database schema changes.
+- `database.db`: SQLite database file created by SQLAlchemy.
+
+## Database Models Overview
+- **Department**: Stores department information and has one-to-many relationship with `Positions` and one-to-many with `Employees`.
+- **Position**: Stores position information and has one-to-many relationship with `Employees`.
+- **Employee**: Links both departments and positions via a foreign key.
+
+## Alembic Usage
+This project uses Alembic to handle database migrations:
+- To create a new migration after model changes:
+- To apply migrations to update the database:
+
+
+## Notes
+- The CLI uses input validation and prompts to guide the user through operations.
+- Relationships between models use SQLAlchemy's `back_populates` to synchronize linked records.
+
+## Author
+Cynthia Meikan
+
+## License
+This project is open-source.
