@@ -1,53 +1,247 @@
-# Employment Department Directory CLI Application
+# Employment Department Directory
 
-This is a command-line workplace management application built using Python, Click for the CLI interface, and SQLAlchemy ORM for database management. Alembic is used for database migrations.
+#### A comprehensive workplace management application built using Python with SQLAlchemy and Click for managing departments, positions, and employees.
+
+#### By **Cynthia Meikan**
+
+---
+
+## Description
+
+Employment Department Directory is a **command-line interface (CLI) application** designed to help organizations manage their workforce more efficiently. The system provides tools for tracking departments, managing employee profiles, and defining job positions.  
+
+Built with **Python**, **SQLAlchemy ORM**, and **Click** for the CLI interface, it demonstrates best practices in **database management**, **user-friendly CLI navigation**, and **schema version control with Alembic**.
+
+---
 
 ## Features
-- Manage departments and their Records
-- Manage employees and their positions
-- Interactive CLI menu for easy navigation and data entry
 
-## Requirements
-- Python 3.8.13
-- Click library for CLI prompts and menus
-- SQLAlchemy for ORM and SQLite database connection
-- Alembic for database migrations and version control
+- **Department Management**: Create, view, update, and delete departments  
+- **Position Management**: Define and manage job roles across departments  
+- **Employee Management**: Add, list, and manage employee profiles linked to departments and positions  
+- **CRUD Operations**: Full Create, Read, Update, Delete functionality for all entities  
+- **Data Validation**: Ensures correct input with error handling  
+- **SQLite Database**: Lightweight and portable database storage (`database.db`)  
+- **User-Friendly CLI**: Simple command-line menus powered by Click  
+- **Database Migrations**: Alembic integration for schema changes  
 
-## Installation
-1. Clone the repository or copy the source code files.
-2. Install dependencies:
-3. Initialize the database and apply migrations:
+---
 
+## Technologies Used
 
-## Running the Application
-Run the main application script to start the interactive workplace CLI:
+- **Python 3.8+**: Core programming language  
+- **SQLAlchemy**: ORM for database interaction  
+- **Click**: Python package for building CLIs  
+- **SQLite**: Embedded database engine  
+- **Alembic**: Database migration tool  
+- **DateTime**: For handling timestamps and employee records  
+- **pip / virtualenv**: Dependency and environment management  
 
-Follow the on-screen prompts to add/view Departments, Positions, Employees.
+---
 
 ## Project Structure
-- `main.py`: Contains the command-line interface logic using Click to interact with users.
-- `models.py`: Defines SQLAlchemy ORM models for Departments, Positions and Employees with relationships.
-- `crud.py`: CRUD operations used by the CLI to interact with the database.
-- `alembic/`: Contains Alembic migration scripts and configuration to manage database schema changes.
-- `database.db`: SQLite database file created by SQLAlchemy.
 
-## Database Models Overview
-- **Department**: Stores department information and has one-to-many relationship with `Positions` and one-to-many with `Employees`.
-- **Position**: Stores position information and has one-to-many relationship with `Employees`.
-- **Employee**: Links both departments and positions via a foreign key.
+EMPLOYMENT-DIRECTORY/
+├── alembic/           # Database migration scripts
+├── crud.py            # Database CRUD operations
+├── models.py          # SQLAlchemy ORM models
+├── app.py             # Main CLI application entry point
+├── database.db        # SQLite database file
+├── alembic.ini        # Alembic configuration
+├── requirements.txt   # Python dependencies
+├── LICENSE            # License file
+└── README.md          # Documentation
 
-## Alembic Usage
-This project uses Alembic to handle database migrations:
-- To create a new migration after model changes:
-- To apply migrations to update the database:
+---
 
+## Installation and Setup
 
-## Notes
-- The CLI uses input validation and prompts to guide the user through operations.
-- Relationships between models use SQLAlchemy's `back_populates` to synchronize linked records.
+### Prerequisites
 
-## Author
-Cynthia Meikan
+- Python **3.8 or higher**
+- pip (Python package manager)
+
+### Installation Process
+
+1. **Clone the repository**
+``bash``
+   git clone git@github.com:Cmay-html/Phase-3-project.git
+   cd Phase-3-project
+
+2. **Set up a virtual environment**
+``bash``
+   python3 -m venv venv
+   source venv/bin/activate     
+
+3. **Install required dependencies**
+``bash``
+   pip install -r requirements.txt
+
+4. **Initialize the database**
+``bash``
+   alembic upgrade head
+
+5. **Run the application**
+``bash``
+   python app.py
+
+---
+
+## How to Use
+
+### Starting the Application
+
+Run the main script to launch the CLI:
+``bash``
+python app.py
+
+### Main Menu Options
+
+The application provides three management areas:
+
+- **Department Management** – Create and view departments  
+- **Position Management** – Define and manage job positions  
+- **Employee Management** – Manage employee profiles  
+
+### Database Operations
+
+#### Running Migrations
+
+# Create new migration
+``bash``
+alembic revision --autogenerate -m "description"
+
+# Apply migrations
+``bash``
+alembic upgrade head
+
+# Revert last migration
+``bash``
+alembic downgrade -1
+
+---
+
+## Module Overview
+
+### models.py
+
+Contains SQLAlchemy ORM models for:
+
+- **Department** – Department records with relationships to employees and positions  
+- **Position** – Job positions linked to employees  
+- **Employee** – Employee records linked to both departments and positions  
+
+### crud.py
+
+Contains CRUD operations:
+
+- Create, Read, Update, Delete for Departments, Positions, and Employees  
+- Database session management  
+- Input validation and error handling  
+
+### app.py
+
+Main application entry point with:
+
+- CLI interface built with Click  
+- Menu navigation system  
+- User input handling and prompts  
+
+---
+
+## Database Schema
+
+### Key Tables
+
+**Departments Table**  
+- id, name, description  
+- Relationship with Positions and Employees  
+
+**Positions Table**  
+- id, title, description, department_id  
+- Relationship with Employees  
+
+**Employees Table**  
+- id, first name,last name, email, department_id, position_id ,hire date 
+- Relationships with Departments and Positions  
+
+---
+
+## API Reference (CRUD Functions)
+
+### Department Operations
+- add_department()  
+- get_departments()  
+- update_department()  
+- delete_department()  
+
+### Position Operations
+- add_position()  
+- get_positions()  
+- update_position()  
+- delete_position()  
+
+### Employee Operations
+- add_employee()  
+- get_employees()  
+- update_employee()  
+- delete_employee()  
+
+---
+
+## Development
+
+### Running Tests
+
+pytest tests/test_models.py
+pytest tests/test_crud.py
+
+### Adding New Features
+- Update models in `models.py`  
+- Add corresponding CRUD functions in `crud.py`  
+- Update CLI logic in `app.py`  
+- Generate a new Alembic migration  
+- Test thoroughly  
+
+---
+
+## Common Issues and Solutions
+
+### Module Import Issues
+
+# Correct import syntax
+from models import Department, Position, Employee
+import crud
+
+### Database Migration Issues
+
+# Reset database
+``bash``
+rm database.db
+alembic upgrade head
+
+### Virtual Environment Issues
+
+# Recreate venv
+``bash``
+rm -rf venv
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+---
+
+## Support and Contact
+
+If you have any questions, suggestions, or need assistance, please contact:
+
+GitHub: https://github.com/Cmay-html
+Email:cynthialairumbe@gmail.com
+
+---
 
 ## License
-This project is open-source.
+
+MIT License 
+
+
