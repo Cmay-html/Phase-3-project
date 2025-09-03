@@ -1,7 +1,7 @@
 import click 
 from datetime import datetime
 from models import Department,Position,Employee,session
-from crud import add_department,add_employee,add_position,view_all_departments,view_all_employees,view_all_positions,view_department_employees,view_department_positions
+from lib.crud import add_department,add_employee,add_position,view_all_departments,view_all_employees,view_all_positions,view_department_employees,view_department_positions
 
 def workplace():
     click.secho("Welcome To Workplace App", fg='blue', bg="white", bold=True)

@@ -41,16 +41,19 @@ Built with **Python**, **SQLAlchemy ORM**, and **Click** for the CLI interface, 
 
 ## Project Structure
 
-EMPLOYMENT-DIRECTORY/
-├── alembic/           # Database migration scripts
-├── crud.py            # Database CRUD operations
-├── models.py          # SQLAlchemy ORM models
-├── app.py             # Main CLI application entry point
-├── database.db        # SQLite database file
-├── alembic.ini        # Alembic configuration
-├── requirements.txt   # Python dependencies
-├── LICENSE            # License file
-└── README.md          # Documentation
+phase-3-project/
+├── alembic/               # Alembic migration folder
+│   └── versions/          # Migration scripts
+├── lib/                   # Supporting application code
+│   └── crud.py            # CRUD operations
+├── alembic.ini            # Alembic configuration
+├── app.py                 # Main CLI entry point (run this!)
+├── database.db            # SQLAlchemy models
+├── models.py              # SQLite database file
+├── Pipfile                # Pipenv dependency file
+├── Pipfile.lock           # Dependency lock file
+└── README.md              # Documentation
+
 
 ---
 
